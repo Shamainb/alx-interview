@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def validUTF8(data):
     def get_num_of_bytes(byte):
         if byte & 0b10000000 == 0:
