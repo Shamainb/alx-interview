@@ -1,12 +1,17 @@
 #!/usr/bin/python3
+"""
+a function that returns the perimeter of the island
+"""
+
+
 def island_perimeter(grid):
     # Initialize the perimeter
     perimeter = 0
-    
+
     # Get the number of rows and columns in the grid
     rows = len(grid)
     cols = len(grid[0])
-    
+
     # Iterate through each cell in the grid
     for r in range(rows):
         for c in range(cols):
@@ -25,5 +30,5 @@ def island_perimeter(grid):
                 # Check the right neighbor
                 if c == cols - 1 or grid[r][c + 1] == 0:
                     perimeter += 1
-    
+
     return perimeter
