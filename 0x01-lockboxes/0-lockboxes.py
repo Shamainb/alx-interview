@@ -1,23 +1,27 @@
-#!/usr/bin/python3
-def can_unlock_all(boxes):
-    visited = set()
-    all_boxes_opened = True
+from collections import deque
 
-    # Start with the first box
-    visited.add(0)
-    queue = [0]
-
-    # Breadth-First Search traversal
+def canUnlockAll(boxes):
+    # Initialize the queue and the set of unlocked boxes
+    queue = deque([0])
+    unlocked = set([0])
+    
+    # Process the queue
     while queue:
-        box_num = queue.pop(0)
+        current_box = queue.popleft()
+        
+        # Access the keys in the current box
+        for key in boxes[current_box]:
+            # If the key corresponds to an unopened box, unlock it
+            if key not in unlocked and key < len(boxes):
+                unlocked.add(key)
+                queue.append(key)
+    
+    # Check if all boxes are unlocked
+    return len(unlocked) == len(boxes)
 
-        for key in boxes[box_num]:
-            if key not in visited:
-                visited.add(key)
-                if key < len(boxes):
-                    queue.append(key)
-                else:
-                    all_boxes_opened = False
+# Example usage
+boxes = [[1], [2], [3], []]
+print(canUnlockAll(boxes))  # Output: True
 
-    # Check if all boxes can be opened
-    return len(visited) == len(boxes) and all_boxes_opened
+boxes = [[1, 3], [3, 0, 1], [2], [0]]
+print(canUnlockAll(boxes))  # Output: False
