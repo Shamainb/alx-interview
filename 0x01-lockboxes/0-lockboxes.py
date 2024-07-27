@@ -18,10 +18,3 @@ def canUnlockAll(boxes):
     
     # Check if all boxes are unlocked
     return len(unlocked) == len(boxes)
-
-# Example usage
-boxes = [[1], [2], [3], []]
-print(canUnlockAll(boxes))  # Output: True
-
-boxes = [[1, 3], [3, 0, 1], [2], [0]]
-print(canUnlockAll(boxes))  # Output: False
