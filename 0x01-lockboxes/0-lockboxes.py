@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""LockBoxes Challeng"""
+
 from collections import deque
 
 def canUnlockAll(boxes):
