@@ -1,35 +1,30 @@
 #!/usr/bin/python3
 """
-a pile of coins of different values,
-determine the fewest number of coins
-needed to meet a given amount total.
+Task 0 Answer
 """
 
 
 def makeChange(coins, total):
-    """
-    Determine the fewest number of coins needed to meet a given amount total.
 
-
-    Args:
-        coins (list): A list of coin denominations.
-        total (int): The total amount of money to make change for.
-
-    Returns:
-        int: The fewest number of coins
-        needed to make the total, or -1 if it is not possible.
+    """ Checks how minimum number of coins needed
+        to meet the total amount.
+        Args:
+            - coins: list of coins denominations to use
+            - total: amount of change required
+        Return:
+            - Minimum number of coins needed to make change.
     """
     if total <= 0:
         return 0
+    coins.sort(reverse=True)
+    coins_needed = 0
+    for coin in coins:
+        if total / coin > 0:
+            coins_needed = coins_needed + (total // coin)
+            total = total % coin
+        if not total:
+            break
 
-    coins.sort()
-
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
-
-    for amount in range(1, total + 1):
-        for coin in coins:
-            if coin <= amount:
-                dp[amount] = min(dp[amount], dp[amount - coin] + 1)
-
-                return dp[total] if dp[total] != float('inf') else -1
+    if total != 0 or coins_needed == 0:
+        return -1
+    return coins_needed
