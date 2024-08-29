@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+'''0x09. Island Perimeter'''
+
+
 def island_perimeter(grid):
-    # Initialize the perimeter counter
+    """Initialize the perimeter counter"""
     perimeter = 0
 
     # Get the number of rows and columns in the grid
