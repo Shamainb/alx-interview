@@ -3,6 +3,7 @@
 
 
 def isWinner(x, nums):
+    '''finds the winner'''
     if not nums or x < 1:
         return None
 
